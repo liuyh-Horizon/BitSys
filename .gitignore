@@ -1,0 +1,10 @@
+*
+
+!*/
+
+!.gitignore
+!BitSys.xpr
+!src/**
+!BitSys.srcs/**
+!README.md
+!LICENSE
