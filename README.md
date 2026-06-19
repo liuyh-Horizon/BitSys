@@ -1,4 +1,4 @@
-# BitSys-LUT Multiplier
+# BitSys: Runtime-Reconfigurable Multi-Precision Multiplier
 
 This repository provides the Verilog RTL implementation of **BitSys-LUT**, a runtime-reconfigurable multi-precision multiplier based on a bitwise systolic array architecture.
 
