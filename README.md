@@ -202,7 +202,7 @@ The project is configured for the Ultra96-V2 platform and does not require a pai
 The testbench is located in:
 
 ```text
-BitSys_MUL/LUT/src/testbench/BitSys_MP_MUL_LUT_tb.v
+BitSys_MUL/LUT/src/testbench/BitSys_MUL_tb.v
 ```
 
 It verifies:
