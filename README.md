@@ -14,12 +14,12 @@ BitSys/
     ├── LUT/
     │   ├── src/
     │   │   ├── verilog/
-    │   │   │   ├── BitSys_MP_MUL_LUT.v
+    │   │   │   ├── BitSys_MUL.v
     │   │   │   ├── BitwiseSA_LUT.v
     │   │   │   ├── BitwisePE_LUT.v
     │   │   │   └── BitwiseSA_DataLoader.v
     │   │   └── testbench/
-    │   │       └── BitSys_MP_MUL_LUT_tb.v
+    │   │       └── BitSys_MUL_tb.v
     │   └── Vivado project files
     └── RTL/
         └── Reserved for the pure RTL version or future non-primitive implementations
