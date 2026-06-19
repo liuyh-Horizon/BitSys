@@ -1,10 +1,17 @@
+# Ignore everything by default
 *
 
+# But keep all directories searchable
 !*/
 
+# Keep repository-level files
 !.gitignore
-!BitSys.xpr
-!src/**
-!BitSys.srcs/**
 !README.md
 !LICENSE
+
+# Keep all Vivado project files named BitSys.xpr in subprojects
+!**/BitSys.xpr
+
+# Keep source and testbench folders in all subprojects
+!**/src/**
+!**/BitSys.srcs/**
