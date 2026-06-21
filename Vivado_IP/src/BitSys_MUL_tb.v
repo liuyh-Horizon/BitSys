@@ -45,7 +45,7 @@ module BitSys_MUL_tb;
     reg     [(IN_WIDTH-1):0]            in_1;           // Input 1
     reg                                 in_valid;
     
-    reg                                 rst;            // Reset the MUL
+    reg                                 mul_rst;        // Reset the MUL
     
     reg                                 is_signed;      // Setting signed/unsigned multiplication
     
@@ -55,23 +55,21 @@ module BitSys_MUL_tb;
     BitSys_MUL
     #(
         .IN_WIDTH(IN_WIDTH),
-        .IN_PRECI(IN_PRECI),
-        .REGION_NUM(REGION_NUM)
+        .IN_PRECI(IN_PRECI)
     )
     BitSys_MUL_inst
     (
         .sys_clk(sys_clk),              // System Clock 
         .sys_rst_n(sys_rst_n),          // System Reset
         
+        .mul_rst(mul_rst),              // Reset the MUL
+        
         .precision(precision),          // Input Precision
+        .is_signed(is_signed),          // Setting signed/unsigned multiplication
             
         .in_0(in_0),                    // Input 0
         .in_1(in_1),                    // Input 1
         .in_valid(in_valid),
-        
-        .rst(rst),                      // Reset the MUL
-        
-        .is_signed(is_signed),          // Setting signed/unsigned multiplication
         
         .result(result),                // Output of MUL Result
         .result_valid(result_valid)     // Output of MUL Result Valid
@@ -198,7 +196,7 @@ module BitSys_MUL_tb;
                     in_0                <= 0;
                     in_1                <= 0;
                     in_valid            <= 0;
-                    rst                 <= 0;
+                    mul_rst             <= 0;
                     is_signed           <= 0;
                     test_i              <= 0;
                 end
@@ -215,7 +213,7 @@ module BitSys_MUL_tb;
                                 in_0            <= $random & 8'hFF;
                                 in_1            <= $random & 8'hFF;
                                 in_valid        <= 1;
-                                rst             <= 0;
+                                mul_rst         <= 0;
                                 is_signed       <= 1;
                                 test_step       <= 1; // Move to next step to wait for config done
                             end
@@ -229,7 +227,7 @@ module BitSys_MUL_tb;
                                 
                                 if (result_valid) 
                                     begin
-                                        rst             <= 1;
+                                        mul_rst             <= 1;
                                         for (test_i=0; test_i<(IN_WIDTH/1); test_i=test_i+1)
                                             begin
                                                 if (expected_1bit_output[test_i]!=actual_1bit_output[test_i])
@@ -254,7 +252,7 @@ module BitSys_MUL_tb;
                                             end
                                     end
                                     else begin
-                                        rst             <= 0;
+                                        mul_rst         <= 0;
                                         test_step       <= 1; // Stay in this step until config done
                                     end
                             end
@@ -264,7 +262,7 @@ module BitSys_MUL_tb;
                                 in_0            <= $random & 8'hFF;
                                 in_1            <= $random & 8'hFF;
                                 in_valid        <= 1;
-                                rst             <= 0;
+                                mul_rst         <= 0;
                                 is_signed       <= 0;
                                 test_step       <= 3; // Move to next step to wait for config done
                             end
@@ -278,7 +276,7 @@ module BitSys_MUL_tb;
                                 
                                 if (result_valid) 
                                     begin
-                                        rst             <= 1;
+                                        mul_rst             <= 1;
                                         for (test_i=0; test_i<(IN_WIDTH/2); test_i=test_i+1)
                                             begin
                                                 if (expected_2bit_unsigned_output[test_i]!=actual_2bit_unsigned_output[test_i])
@@ -303,7 +301,7 @@ module BitSys_MUL_tb;
                                             end
                                     end
                                     else begin
-                                        rst             <= 0;
+                                        mul_rst         <= 0;
                                         test_step       <= 3; // Stay in this step until config done
                                     end
                             end
@@ -313,7 +311,7 @@ module BitSys_MUL_tb;
                                 in_0            <= $random & 8'hFF;
                                 in_1            <= $random & 8'hFF;
                                 in_valid        <= 1;
-                                rst             <= 0;
+                                mul_rst         <= 0;
                                 is_signed       <= 1;
                                 test_step       <= 5; // Move to next step to wait for config done
                             end
@@ -327,7 +325,7 @@ module BitSys_MUL_tb;
                                 
                                 if (result_valid) 
                                     begin
-                                        rst             <= 1;
+                                        mul_rst             <= 1;
                                         for (test_i=0; test_i<(IN_WIDTH/2); test_i=test_i+1)
                                             begin
                                                 if (expected_2bit_signed_output[test_i]!=actual_2bit_signed_output[test_i])
@@ -352,7 +350,7 @@ module BitSys_MUL_tb;
                                             end
                                     end
                                     else begin
-                                        rst             <= 0;
+                                        mul_rst         <= 0;
                                         test_step       <= 5; // Stay in this step until config done
                                     end
                             end
@@ -362,7 +360,7 @@ module BitSys_MUL_tb;
                                 in_0            <= $random & 8'hFF;
                                 in_1            <= $random & 8'hFF;
                                 in_valid        <= 1;
-                                rst             <= 0;
+                                mul_rst         <= 0;
                                 is_signed       <= 0;
                                 test_step       <= 7; // Move to next step to wait for config done
                             end
@@ -376,7 +374,7 @@ module BitSys_MUL_tb;
                                 
                                 if (result_valid) 
                                     begin
-                                        rst             <= 1;
+                                        mul_rst             <= 1;
                                         for (test_i=0; test_i<(IN_WIDTH/4); test_i=test_i+1)
                                             begin
                                                 if (expected_4bit_unsigned_output[test_i]!=actual_4bit_unsigned_output[test_i])
@@ -401,7 +399,7 @@ module BitSys_MUL_tb;
                                             end
                                     end
                                     else begin
-                                        rst             <= 0;
+                                        mul_rst         <= 0;
                                         test_step       <= 7; // Stay in this step until config done
                                     end
                             end
@@ -411,7 +409,7 @@ module BitSys_MUL_tb;
                                 in_0            <= $random & 8'hFF;
                                 in_1            <= $random & 8'hFF;
                                 in_valid        <= 1;
-                                rst             <= 0;
+                                mul_rst         <= 0;
                                 is_signed       <= 1;
                                 test_step       <= 9; // Move to next step to wait for config done
                             end
@@ -425,7 +423,7 @@ module BitSys_MUL_tb;
                                 
                                 if (result_valid) 
                                     begin
-                                        rst             <= 1;
+                                        mul_rst             <= 1;
                                         for (test_i=0; test_i<(IN_WIDTH/4); test_i=test_i+1)
                                             begin
                                                 if (expected_4bit_signed_output[test_i]!=actual_4bit_signed_output[test_i])
@@ -450,7 +448,7 @@ module BitSys_MUL_tb;
                                             end
                                     end
                                     else begin
-                                        rst             <= 0;
+                                        mul_rst         <= 0;
                                         test_step       <= 9; // Stay in this step until config done
                                     end
                             end
@@ -460,7 +458,7 @@ module BitSys_MUL_tb;
                                 in_0            <= $random & 8'hFF;
                                 in_1            <= $random & 8'hFF;
                                 in_valid        <= 1;
-                                rst             <= 0;
+                                mul_rst         <= 0;
                                 is_signed       <= 0;
                                 test_step       <= 11; // Move to next step to wait for config done
                             end
@@ -474,7 +472,7 @@ module BitSys_MUL_tb;
                                 
                                 if (result_valid) 
                                     begin
-                                        rst             <= 1;
+                                        mul_rst             <= 1;
                                         for (test_i=0; test_i<(IN_WIDTH/8); test_i=test_i+1)
                                             begin
                                                 if (expected_8bit_unsigned_output[test_i]!=actual_8bit_unsigned_output[test_i])
@@ -499,7 +497,7 @@ module BitSys_MUL_tb;
                                             end
                                     end
                                     else begin
-                                        rst             <= 0;
+                                        mul_rst         <= 0;
                                         test_step       <= 11; // Stay in this step until config done
                                     end
                             end
@@ -509,7 +507,7 @@ module BitSys_MUL_tb;
                                 in_0            <= $random & 8'hFF;
                                 in_1            <= $random & 8'hFF;
                                 in_valid        <= 1;
-                                rst             <= 0;
+                                mul_rst         <= 0;
                                 is_signed       <= 1;
                                 test_step       <= 13; // Move to next step to wait for config done
                             end
@@ -523,7 +521,7 @@ module BitSys_MUL_tb;
                                 
                                 if (result_valid) 
                                     begin
-                                        rst             <= 1;
+                                        mul_rst             <= 1;
                                         for (test_i=0; test_i<(IN_WIDTH/8); test_i=test_i+1)
                                             begin
                                                 if (expected_8bit_signed_output[test_i]!=actual_8bit_signed_output[test_i])
@@ -547,7 +545,7 @@ module BitSys_MUL_tb;
                                             end
                                     end
                                     else begin
-                                        rst             <= 0;
+                                        mul_rst         <= 0;
                                         test_step       <= 13; // Stay in this step until config done
                                     end
                             end

@@ -27,26 +27,27 @@ module BitwisePE_LUT
 (
     input   wire                            sys_clk,        // System Clock 
     
-    input   wire                            in_0,           // Input 0
-    input   wire                            in_1,           // Input 1
-    input   wire                            in_0_start,     
-    input   wire                            in_1_start,     // Start Signal control the working statement
+    input   wire                            in_0,           // 1-bit Input 0
+    input   wire                            in_1,           // 1-bit Input 1
+    input   wire                            in_0_valid,     // Input 0 valid signal
+    input   wire                            in_1_valid,     // Input 1 valid signal
     
-    input   wire                            pattern,        // Width or height of input matrix
+    input   wire                            pattern,        // Control the Bitwise PE switch between AND/0 or AND/XNOR
     
-    output  reg                             result,         // Output of LUT Unit Result
-    output  reg                             result_valid,   // Output of LUT Unit Result Valid
+    output  reg                             result,         // 1-bit Output of Bitwise PE
+    output  reg                             result_valid,   // Output valid signal of Bitwise PE
     
-    output  reg                             in_0_out,       // Input 0 to next LUT Unit
-    output  reg                             in_1_out,       // Input 1 to next LUT Unit
-    output  reg                             in_0_start_out, // Input 0 enable the working of next LUT Unit
-    output  reg                             in_1_start_out  // Input 1 enable the working of next LUT Unit
+    output  reg                             in_0_out,       // Input 0 to the next Bitwise PE
+    output  reg                             in_1_out,       // Input 1 to the next Bitwise PE
+    output  reg                             in_0_valid_out, // Input 0 valid signal to the next Bitwise PE
+    output  reg                             in_1_valid_out  // Input 1 valid signal to the next Bitwise PE
 );
 
 generate
 
-    case (REGION)
-        0   :   begin
+    case (REGION) // Two types of Bitwise PE. Type 1 placed one the diagonal of Bitwise Systolc Array. Othe Bitwise PE should be type 0
+    
+        0   :   begin // Type 0: Switching between AND/0
                     
                     wire    O5, O6;
     
@@ -60,8 +61,8 @@ generate
                        .O5(O5),         // 1-bit lower LUT5 output
                        .I0(in_0),       // 1-bit LUT input
                        .I1(in_1),       // 1-bit LUT input
-                       .I2(in_0_start), // 1-bit LUT input
-                       .I3(in_1_start), // 1-bit LUT input
+                       .I2(in_0_valid), // 1-bit LUT input
+                       .I3(in_1_valid), // 1-bit LUT input
                        .I4(pattern),    // 1-bit LUT input
                        .I5(1'b1)        // 1-bit LUT input (fast MUX select only available to O6 output)
                     );
@@ -72,11 +73,12 @@ generate
                             result_valid    <= O6;
                             in_0_out        <= in_0;
                             in_1_out        <= in_1;
-                            in_0_start_out  <= in_0_start;
-                            in_1_start_out  <= in_1_start;
+                            in_0_valid_out  <= in_0_valid;
+                            in_1_valid_out  <= in_1_valid;
                         end
                 end
-        1   :   begin
+                
+        1   :   begin // Type 1: Switching between AND/XNOR
                     
                     wire    O5, O6;
     
@@ -90,8 +92,8 @@ generate
                        .O5(O5),         // 1-bit lower LUT5 output
                        .I0(in_0),       // 1-bit LUT input
                        .I1(in_1),       // 1-bit LUT input
-                       .I2(in_0_start), // 1-bit LUT input
-                       .I3(in_1_start), // 1-bit LUT input
+                       .I2(in_0_valid), // 1-bit LUT input
+                       .I3(in_1_valid), // 1-bit LUT input
                        .I4(pattern),    // 1-bit LUT input
                        .I5(1'b1)        // 1-bit LUT input (fast MUX select only available to O6 output)
                     );
@@ -102,8 +104,8 @@ generate
                             result_valid    <= O6;
                             in_0_out        <= in_0;
                             in_1_out        <= in_1;
-                            in_0_start_out  <= in_0_start;
-                            in_1_start_out  <= in_1_start;
+                            in_0_valid_out  <= in_0_valid;
+                            in_1_valid_out  <= in_1_valid;
                         end
                 end
     endcase
