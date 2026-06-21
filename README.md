@@ -309,26 +309,32 @@ Future releases are expected to include:
 If you use this repository in your research, please cite the full paper:
 
 ```bibtex
-@inproceedings{liu2026bitsys,
-  author    = {Liu, Yuhao and Ullah, Salim and Kumar, Akash},
-  title     = {Bitwise Systolic Array Architecture for Runtime-Reconfigurable Multi-precision Quantized Multiplication on Hardware Accelerators},
-  booktitle = {Proceedings of the International Symposium on Quality Electronic Design (ISQED)},
-  year      = {2026},
-  note      = {Please update this entry with the official DOI, page numbers, and publisher information when available}
+@INPROCEEDINGS{liu2026bitsys,
+  author={Liu, Yuhao and Ullah, Salim and Kumar, Akash},
+  booktitle={2025 26th International Symposium on Quality Electronic Design (ISQED)}, 
+  title={Bitwise Systolic Array Architecture for Runtime-Reconfigurable Multi-Precision Quantized Multiplication on Hardware Accelerators}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-9},
+  keywords={Runtime;Quantization (signal);Accuracy;Neural networks;Memory architecture;Systolic arrays;Delays;Racetrack memory;Object tracking;Clocks},
+  doi={10.1109/ISQED65160.2025.11014376}
 }
 ```
 
 An earlier one-page poster version of this work appeared at FCCM 2024:
 
 ```bibtex
-@inproceedings{liu2024bitsys_fccm_poster,
-  author    = {Liu, Yuhao and Ullah, Salim and Kumar, Akash},
-  booktitle = {2024 IEEE 32nd Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM)},
-  title     = {BitSys: Bitwise Systolic Array Architecture for Multi-precision Quantized Hardware Accelerators},
-  year      = {2024},
-  pages     = {220--220},
-  keywords  = {Accuracy;Runtime;Quantization (signal);Pipelines;Neural networks;Computer architecture;Systolic arrays;Multi-Precision;Multiplier;Runtime-Reconfiguration;FPGA;Quantized Neural Network;Systolic Array},
-  doi       = {10.1109/FCCM60383.2024.00042}
+@INPROCEEDINGS{liu2024bitsys_fccm_poster,
+  author={Liu, Yuhao and Ullah, Salim and Kumar, Akash},
+  booktitle={2024 IEEE 32nd Annual International Symposium on Field-Programmable Custom Computing Machines (FCCM)}, 
+  title={BitSys: Bitwise Systolic Array Architecture for Multi-precision Quantized Hardware Accelerators}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={220-220},
+  keywords={Accuracy;Runtime;Quantization (signal);Pipelines;Neural networks;Computer architecture;Systolic arrays;Multi-Precision;Multiplier;Runtime-Reconfiguration;FPGA;Quantized Neural Network;Systolic Array},
+  doi={10.1109/FCCM60383.2024.00042}
 }
 ```
 
