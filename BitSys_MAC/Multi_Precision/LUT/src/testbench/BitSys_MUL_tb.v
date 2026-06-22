@@ -29,6 +29,8 @@ module BitSys_MUL_tb;
 
     parameter IN_WIDTH      = 8;
     parameter IN_PRECI      = 2;
+    parameter BIT1_EN       = 1;
+    parameter OPTIMIZE      = 0;
     parameter REGION_NUM    = 4;
     parameter OUT_WIDTH     = 2*IN_WIDTH;
     

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 06/19/2026 05:48:08 PM
+// Create Date: 06/22/2026 05:33:36 PM
 // Design Name: 
-// Module Name: BitwisePE_LUT
+// Module Name: BitwisePE_RTL
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 

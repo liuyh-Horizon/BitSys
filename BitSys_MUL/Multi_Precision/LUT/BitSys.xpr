@@ -127,7 +127,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../Vivado_IP/component.xml">
+      <File Path="$PPRDIR/../../../Vivado_IP/BitSys_MPMAC/component.xml">
         <FileInfo SFType="IPXACT"/>
       </File>
       <Config>
