@@ -266,7 +266,3 @@ An earlier one-page poster version of this work appeared at FCCM 2024:
 This project is released under the Apache License 2.0.
 
 Please see the `LICENSE` file for details.
-
-## Acknowledgement
-
-This work was developed as part of the BitSys project for runtime-reconfigurable multi-precision quantized hardware accelerators.
